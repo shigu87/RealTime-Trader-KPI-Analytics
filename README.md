@@ -59,14 +59,15 @@ This project involves the creation of a Snowflake-based data pipeline designed t
 
 Before you begin, make sure you have the following:
 
-1. **Snowflake Account**: You must have access to a Snowflake account to create databases and tables.
-2. **Python 3.x**: This project uses Python for generating mock data and interacting with Snowflake.
+1. **Snowflake Account**: need to have access to a Snowflake account to create databases and tables.
+2. **Python 3**: This project uses Python for generating mock data and interacting with Snowflake.
 3. **Required Python Libraries**:
    - `snowflake-connector-python`: Snowflake's Python connector to interact with the database.
    - `pandas`: For handling data manipulation (especially for mock data).
    - `random` and `time`: Used for generating random mock data and controlling execution timing.
+4. Refer mock_data_generator.py code for mock data generation.
+   **To simulate Change Data Capture (CDC), we can generate mock data for both the Bronze Layer and Silver Layer **
+6. Refer snowflake_sql.sql code for the dynamic table pipeline(bronze, silver and gold) & lineage.
+   
 
-Install the required Python packages by running:
 
-```bash
-pip install snowflake-connector-python pandas
