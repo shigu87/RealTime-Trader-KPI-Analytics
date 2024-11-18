@@ -26,7 +26,6 @@ The pipeline structure is based on **Futures First's** requirements for trade da
 - [Future Improvements](#future-improvements)
 - [Error Handling and Logging](#error-handling-and-logging)
 - [Running the Pipeline](#running-the-pipeline)
-- [License](#license)
 
 ## Introduction
 
