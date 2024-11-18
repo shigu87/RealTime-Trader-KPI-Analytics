@@ -68,6 +68,91 @@ Before you begin, make sure you have the following:
 4. Refer mock_data_generator.py code for mock data generation.
    **To simulate Change Data Capture (CDC), we can generate mock data for both the Bronze Layer and Silver Layer **
 6. Refer snowflake_sql.sql code for the dynamic table pipeline(bronze, silver and gold) & lineage.
+
+---
+
+## Detailed Steps of the Pipeline
+
+### 1. **Ingestion of Raw Data (Bronze Layer)**:
+   - **Mock trade data** is generated using a Python script.
+   - The generated data is inserted into the **bronze_trades** table in Snowflake.
+
+### 2. **Data Cleaning and Transformation (Silver Layer)**:
+   - The data from the **Bronze Layer** is cleaned. This can include:
+     - Filtering out records with **invalid trade prices** or **missing data**.
+   - After cleaning, the data is inserted into the **silver_trades** table for further processing.
+
+### 3. **Aggregation and Business Reporting (Gold Layer)**:
+   - The cleaned data from the **Silver Layer** is aggregated based on:
+     - **Trader performance** and **trade type**.
+   - The results of this aggregation are stored in:
+     - **gold_trader_performance**: A table that holds performance metrics by trader.
+     - **gold_trade_summary**: A table summarizing the trades by type.
+
+---
+
+## Challenges Faced
+
+### 1. **Data Quality**:
+   - Ensuring the **mock data** used for testing the pipeline was representative of **real-world data**.
+   - Simulating **edge cases** in the data to make sure the pipeline handles diverse scenarios effectively.
+
+### 2. **Latency**:
+   - Generating and processing data in **near-real-time** posed challenges around:
+     - Managing **Snowflake's processing capacity**.
+     - Ensuring **low-latency data movement** throughout the pipeline.
+
+### 3. **Transformation Complexity**:
+   - The transformation steps for **cleaning** and **aggregating data** required a deep understanding of:
+     - **Business rules** and how they should be implemented in SQL.
+     - Efficiently processing and aggregating large datasets while maintaining performance.
+
+---
+
+## Real-World Usefulness
+
+This pipeline can be applied in industries like **financial services** or **e-commerce**, where **trade data** needs to be processed and analyzed in **real-time**. It enables:
+
+- **Fast decision-making** by providing up-to-date insights from processed data.
+- **Performance tracking** to evaluate individual trader or product performance over time.
+- **Reporting** based on clean, aggregated data for accurate business intelligence and analytics.
+
+---
+
+## Future Improvements
+
+- **Automating Error Handling**: Implement better error-handling mechanisms to automatically retry failed operations or log issues for easier monitoring and intervention.
+- **Scalability**: Enhance the pipeline to handle larger datasets efficiently, leveraging Snowflake's scaling features such as multi-cluster warehouses to ensure performance as data volume grows.
+- **Advanced Data Transformations**: Introduce more sophisticated transformations, such as **anomaly detection** or **trend analysis**, to identify patterns and outliers for more advanced business insights.
+
+---
+
+## Error Handling and Logging
+
+- **Error Logging**: Each data insertion and transformation step is logged for better traceability, ensuring that any issues can be tracked and resolved efficiently.
+- **Retry Mechanism**: In case of failure, the pipeline is designed to automatically retry data operations or report issues for manual intervention, minimizing downtime and ensuring data consistency.
+
+---
+
+## Running the Pipeline
+
+1. **Set up Snowflake**: Ensure that Snowflake is set up with the necessary databases and tables (`raw_orders`, `bronze_trades`, `silver_trades`, `gold_trader_performance`, `gold_trade_summary`).
    
+2. **Run the Python Script**: Execute the Python script to continuously generate mock trade data and insert it into the `bronze_trades` table in Snowflake.
+
+3. **Monitor the Data Flow**: Track the data as it moves through the Bronze, Silver, and Gold layers. Check the aggregated reports in the Gold Layer tables (`gold_trader_performance`, `gold_trade_summary`) to ensure that the pipeline is functioning correctly.
+
+---
+
+### Key Features in the Updated README:
+1. **Table of Contents**: Organized structure for easy navigation.
+2. **Snowflake Setup**: Includes detailed SQL commands for creating tables and views.
+3. **Mock Data Generation**: Python script provided to simulate data insertion.
+4. **Pipeline Flow**: Detailed descriptions of the Bronze, Silver, and Gold layers.
+5. **Challenges and Outcomes**: Insight into the practical challenges and results of the project.
+6. **Future Improvements**: Plans for enhancing the pipeline's scalability and efficiency. 
+
+
+
 
 
