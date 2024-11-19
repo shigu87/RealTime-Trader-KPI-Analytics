@@ -1,6 +1,6 @@
 # RealTime-Trader-KPI-Analytics
 
-# Trade Data Pipeline for Ecomm (Bronze-Silver-Gold Architecture)
+**Trade Data Pipeline for Ecomm (Bronze-Silver-Gold Architecture)**
 
 This project demonstrates the creation and management of a **data pipeline** that processes **trade data** using a **Bronze-Silver-Gold** architecture in **Snowflake**. It simulates the flow of raw trading data from ingestion through processing to reporting, ensuring that data is transformed, aggregated, and made ready for business analysis.
 
